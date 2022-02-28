@@ -38,19 +38,18 @@ while (!inputCorrectly)
 }
 
 int secretNumber = new Random().Next(1, 101);
-int guessNumber = 1;
 
-while (guessNumber <= guessesLeft || cheater)
+while (guessesLeft > 0 || cheater)
 {
     if (!cheater)
     {
-        if (guessesLeft - guessNumber + 1 == 1)
+        if (guessesLeft == 1)
         {
             Console.WriteLine($"You have 1 guess left.");
         }
         else
         {
-            Console.WriteLine($"You have {guessesLeft - guessNumber + 1} guesses left.");
+            Console.WriteLine($"You have {guessesLeft} guesses left.");
         }
     }
     else
@@ -79,7 +78,7 @@ while (guessNumber <= guessesLeft || cheater)
     {
         Console.WriteLine("You guessed too LOW!");
     }
-    guessNumber++;
+    guessesLeft--;
 
 }
 
