@@ -1,5 +1,15 @@
 ﻿using System;
 
+int secretNumber = 42;
+
 Console.Write("Please guess the Secret Number: ");
 string guess = Console.ReadLine();
-Console.WriteLine($"Your guess was {guess}");
+
+if (int.Parse(guess) == secretNumber)
+{
+    Console.WriteLine("Congratulations! You guessed correctly!");
+}
+else
+{
+    Console.WriteLine("You are WRONG!");
+}
