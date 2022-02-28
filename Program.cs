@@ -6,27 +6,35 @@ Console.WriteLine(@"Please choose a difficulty level:
 3) Hard
 4) Cheater");
 
-string difficultyChoice = Console.ReadLine();
-int guessesLeft;
+int guessesLeft = 0;
 bool cheater = false;
-switch (difficultyChoice)
+bool inputCorrectly = false;
+while (!inputCorrectly)
 {
-    case "1":
-        guessesLeft = 8;
-        break;
-    case "2":
-        guessesLeft = 6;
-        break;
-    case "3":
-        guessesLeft = 4;
-        break;
-    case "4":
-        guessesLeft = 0;
-        cheater = true;
-        break;
-    default:
-        guessesLeft = 1;
-        break;
+    string difficultyChoice = Console.ReadLine();
+    switch (difficultyChoice)
+    {
+        case "1":
+            guessesLeft = 8;
+            inputCorrectly = true;
+            break;
+        case "2":
+            guessesLeft = 6;
+            inputCorrectly = true;
+            break;
+        case "3":
+            guessesLeft = 4;
+            inputCorrectly = true;
+            break;
+        case "4":
+            guessesLeft = 0;
+            inputCorrectly = true;
+            cheater = true;
+            break;
+        default:
+            Console.WriteLine("Please input 1, 2, 3, or 4");
+            break;
+    }
 }
 
 int secretNumber = new Random().Next(1, 101);
@@ -63,16 +71,13 @@ while (guessNumber <= guessesLeft || cheater)
         Console.WriteLine("Congratulations! You guessed correctly!");
         break;
     }
+    else if (guess > secretNumber)
+    {
+        Console.WriteLine("You guessed too HIGH!");
+    }
     else
     {
-        if (guess > secretNumber)
-        {
-            Console.WriteLine("You guessed too HIGH!");
-        }
-        else if (guess < secretNumber)
-        {
-            Console.WriteLine("You guessed too LOW!");
-        }
+        Console.WriteLine("You guessed too LOW!");
     }
     guessNumber++;
 
