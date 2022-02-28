@@ -8,16 +8,23 @@ while (guessNumber <= guessesLeft)
 {
     Console.WriteLine($"Your guess - {guessNumber}");
     Console.Write("Please guess the Secret Number: ");
-    string guess = Console.ReadLine();
+    int guess = int.Parse(Console.ReadLine());
 
-    if (int.Parse(guess) == secretNumber)
+    if (guess == secretNumber)
     {
         Console.WriteLine("Congratulations! You guessed correctly!");
         break;
     }
     else
     {
-        Console.WriteLine("You are WRONG!");
+        if (guess > secretNumber)
+        {
+            Console.WriteLine("You guessed too HIGH!");
+        }
+        else if (guess < secretNumber)
+        {
+            Console.WriteLine("You guessed too LOW!");
+        }
         if (guessesLeft - guessNumber == 1)
         {
             Console.WriteLine($"You have 1 guess left.");
