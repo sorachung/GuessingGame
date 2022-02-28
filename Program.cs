@@ -1,6 +1,6 @@
 ﻿using System;
 
-int secretNumber = 42;
+int secretNumber = new Random().Next(1, 101);
 int guessesLeft = 4;
 int guessNumber = 1;
 
@@ -18,6 +18,14 @@ while (guessNumber <= guessesLeft)
     else
     {
         Console.WriteLine("You are WRONG!");
+        if (guessesLeft - guessNumber == 1)
+        {
+            Console.WriteLine($"You have 1 guess left.");
+        }
+        else
+        {
+            Console.WriteLine($"You have {guessesLeft - guessNumber} guesses left.");
+        }
     }
     guessNumber++;
 
