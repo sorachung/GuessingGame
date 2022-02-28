@@ -1,7 +1,29 @@
 ﻿using System;
 
+Console.WriteLine(@"Please choose a difficulty level:
+1) Easy
+2) Medium
+3) Hard");
+
+string difficultyChoice = Console.ReadLine();
+int guessesLeft;
+switch (difficultyChoice)
+{
+    case "1":
+        guessesLeft = 8;
+        break;
+    case "2":
+        guessesLeft = 6;
+        break;
+    case "3":
+        guessesLeft = 4;
+        break;
+    default:
+        guessesLeft = 1;
+        break;
+}
+
 int secretNumber = new Random().Next(1, 101);
-int guessesLeft = 4;
 int guessNumber = 1;
 
 while (guessNumber <= guessesLeft)
